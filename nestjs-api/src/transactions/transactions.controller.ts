@@ -4,7 +4,7 @@ import { CreateTransactionDto } from './dto/create-transaction.dto';
 import { TransactionsService } from './transactions.service';
 import { JwtAuthGuard } from './../auth/jwt-strategy/jwt-auth.guard';
 import { TenantGuard } from './../tenant/tenant.guard';
-import { TenantService } from 'src/tenant/tenant/tenant.service';
+import { TenantService } from './../tenant/tenant/tenant.service';
 
 @UseGuards(JwtAuthGuard, TenantGuard)
 @Controller('transactions')
