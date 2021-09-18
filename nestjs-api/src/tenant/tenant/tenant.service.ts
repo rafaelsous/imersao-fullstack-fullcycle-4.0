@@ -23,6 +23,6 @@ export class TenantService {
         subdomain,
       },
       rejectOnEmpty: true,
-    })
+    });
   }
 }

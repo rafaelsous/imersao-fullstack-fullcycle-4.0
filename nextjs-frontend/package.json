@@ -21,14 +21,17 @@
     "date-fns": "^2.24.0",
     "jsonwebtoken": "^8.5.1",
     "keycloak-js": "^15.0.2",
+    "lodash": "^4.17.21",
     "next": "11.1.2",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-hook-form": "^7.15.3",
-    "rxjs": "^7.3.0"
+    "rxjs": "^7.3.0",
+    "swr": "^1.0.1"
   },
   "devDependencies": {
     "@types/jsonwebtoken": "^8.5.5",
+    "@types/lodash": "^4.14.173",
     "@types/react": "17.0.21",
     "eslint": "7.32.0",
     "eslint-config-next": "11.1.2",

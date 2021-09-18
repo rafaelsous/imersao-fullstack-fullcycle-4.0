@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post, Req, UseGuards } from '@nestjs/common';
+import { Body, Controller, Get, Post, UseGuards } from '@nestjs/common';
 
 import { CreateTransactionDto } from './dto/create-transaction.dto';
 import { TransactionsService } from './transactions.service';
@@ -20,7 +20,7 @@ export class TransactionsController {
   }
 
   @Get()
-  findAll(@Req() req) {
+  findAll() {
     return this.transactionsService.findAll();
   }
 }
