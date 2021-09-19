@@ -27,6 +27,8 @@ const Navbar: FunctionComponent = () => {
   const tenant = useContext(TenantContext);
   const classes = useStyles();
 
+  // TODO: Verificar a razão pela qual o tenant está vindo com undefined
+
   return initialized && keycloak?.authenticated && tenant ? (
     <div className={classes.root}>
       <AppBar position="static">
