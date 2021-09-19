@@ -26,6 +26,7 @@ import { ReportsModule } from './reports/reports.module';
       database: process.env.DB_DATABASE,
       models: [Transaction, Account, Report],
       autoLoadModels: true,
+      synchronize: true,
       sync: {
         alter: true,
       },
