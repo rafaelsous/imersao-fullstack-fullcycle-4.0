@@ -11,6 +11,7 @@ import { useKeycloak } from '@react-keycloak/ssr';
 import { NextPage } from 'next';
 import { useRouter } from 'next/router';
 import { useForm } from 'react-hook-form';
+import { Head } from '../../components/Head';
 
 import makeHttp from '../../utils/http';
 import {
@@ -43,6 +44,8 @@ const NewTransactionPage: NextPage = () => {
 
   return keycloak?.authenticated ? (
     <Container>
+      <Head title="Nova Transação" />
+
       <Typography component="h1" variant="h4">
         Nova Transação
       </Typography>

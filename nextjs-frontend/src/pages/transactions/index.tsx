@@ -19,11 +19,12 @@ import AddIcon from '@material-ui/icons/Add';
 import { format, parseISO } from 'date-fns';
 import { NextPage } from 'next';
 import { useRouter } from 'next/router';
-import Page from '../../components/Page';
+import { Page } from '../../components/Page';
 
 import makeHttp from '../../utils/http';
 import { Transaction } from '../../utils/models';
 import { withAuth } from "../../hof/withAuth";
+import { Head } from '../../components/Head';
 
 interface TransactionsPageProps {
   transactions: Transaction[];
@@ -65,6 +66,8 @@ const TransactionsPage: NextPage<TransactionsPageProps> = ({
   
   return (
     <Page>
+      <Head title="Minhas Transações" />
+
       <Typography component="h1" variant="h4">
         Minhas Transações
       </Typography>

@@ -12,7 +12,7 @@ interface PageProps {
 
 }
 
-const Page: NextPage<PageProps> = (props: any) => {
+export const Page: NextPage<PageProps> = (props: any) => {
   const classes = useStyles();
 
   return (
@@ -22,5 +22,3 @@ const Page: NextPage<PageProps> = (props: any) => {
     </>
   );
 };
-
-export default Page;
