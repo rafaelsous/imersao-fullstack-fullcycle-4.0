@@ -23,11 +23,9 @@ const useStyles = makeStyles({
 });
 
 const Navbar: FunctionComponent = () => {
-  const classes = useStyles();
   const { initialized, keycloak } = useKeycloak();
   const tenant = useContext(TenantContext);
-
-  console.log(initialized, keycloak, tenant);
+  const classes = useStyles();
 
   return initialized && keycloak?.authenticated && tenant ? (
     <div className={classes.root}>
@@ -35,16 +33,14 @@ const Navbar: FunctionComponent = () => {
         <Toolbar>
           <Menu />
 
-          <Box marginRight={1}>
-            <StoreIcon />
-          </Box>
+          <StoreIcon />
 
           <Typography component="h1" variant="h6" className={classes.title}>
             Fincycle - {tenant.name}
           </Typography>
 
           <Typography>Saldo R$ {tenant.balance}</Typography>
-
+          
           <UserAccountMenu />
         </Toolbar>
       </AppBar>

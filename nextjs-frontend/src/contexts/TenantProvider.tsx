@@ -16,11 +16,11 @@ export default TenantContext;
 
 export const TenantProvider: FunctionComponent = (props) => {
   const [tenant, setTenant] = useState<Tenant>();
-const { data, error } = useAuthSwr("my-account", {
+  const { data, error } = useAuthSwr("/my-account", {
     refreshInterval: 10000,
   });
 
-  console.log(data);
+  console.log(data, error);
 
   useEffect(() => {
     if (!isEqual(data, tenant)) {
