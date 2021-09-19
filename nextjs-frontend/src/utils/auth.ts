@@ -1,7 +1,7 @@
 import jwt, { JwtPayload } from 'jsonwebtoken';
 import { KeycloakProfile, KeycloakTokenParsed } from 'keycloak-js';
 
-import { parseCookies } from './cookies';
+import { destroyCookie, parseCookies } from './cookies';
 
 export const KEYCLOAK_PUBLIC_CONFIG = {
   realm: process.env.NEXT_PUBLIC_KEYCLOAK_REALM as string,
@@ -35,4 +35,9 @@ export function verifyToken(token: string, key: string): JwtPayload | false {
     console.error(e, token, key);
     return false;
   }
+}
+
+export function createAuthCookies() {
+  destroyCookie("kcToken");
+  destroyCookie("kcIdToken");
 }
