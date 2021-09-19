@@ -17,13 +17,13 @@ import {
 import { Button, Typography } from '@material-ui/core';
 import AddIcon from '@material-ui/icons/Add';
 import { format, parseISO } from 'date-fns';
-import { GetServerSideProps, NextPage } from 'next';
+import { NextPage } from 'next';
 import { useRouter } from 'next/router';
 import Page from '../../components/Page';
 
-import { Token, validateAuth } from '../../utils/auth';
 import makeHttp from '../../utils/http';
 import { Transaction } from '../../utils/models';
+import { withAuth } from "../../hof/withAuth";
 
 interface TransactionsPageProps {
   transactions: Transaction[];
@@ -98,20 +98,7 @@ const TransactionsPage: NextPage<TransactionsPageProps> = ({
 
 export default TransactionsPage;
 
-export const getServerSideProps: GetServerSideProps = async (ctx) => {
-  const auth = validateAuth(ctx.req);
-
-  if (!auth) {
-    return {
-      redirect: {
-        permanent: false,
-        destination: '/login',
-      },
-    };
-  }
-
-  const token = (auth as Token).token;
-
+export const getServerSideProps = withAuth(async (ctx, { token }) => {
   const { data: transactions } = await makeHttp(token).get('transactions');
 
   return {
@@ -119,4 +106,4 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
       transactions,
     },
   };
-};
+});

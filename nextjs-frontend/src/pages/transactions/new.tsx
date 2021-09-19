@@ -7,6 +7,7 @@ import {
   TextField,
   Typography,
 } from '@material-ui/core';
+import { useKeycloak } from '@react-keycloak/ssr';
 import { NextPage } from 'next';
 import { useRouter } from 'next/router';
 import { useForm } from 'react-hook-form';
@@ -20,6 +21,7 @@ import {
 const NewTransactionPage: NextPage = () => {
   const { register, handleSubmit } = useForm();
   const router = useRouter();
+  const { initialized, keycloak } = useKeycloak();
 
   async function onSubmit(data: any) {
     try {
@@ -30,7 +32,16 @@ const NewTransactionPage: NextPage = () => {
     }
   }
 
-  return (
+  if (
+    typeof window !== 'undefined' &&
+    initialized &&
+    !keycloak?.authenticated
+  ) {
+    router.replace(`/login?from=${window.location.pathname}`);
+    return null;
+  }
+
+  return keycloak?.authenticated ? (
     <Container>
       <Typography component="h1" variant="h4">
         Nova Transação
@@ -115,7 +126,7 @@ const NewTransactionPage: NextPage = () => {
         </Grid>
       </form>
     </Container>
-  );
+  ) : null;
 };
 
 export default NewTransactionPage;
